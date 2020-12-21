@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{ Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{ Background}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{ Variational Autoencoder Networks \(VAEs\)}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{ Learning by Active Nonlinear Diffusion}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{ Proposed Algorithm}{}% 5
+\BOOKMARK [1][-]{section.4}{ Experimental Results}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{ Discussion of Experimental Results}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{ Computational Complexity}{section.4}% 8
+\BOOKMARK [1][-]{section.5}{ Conclusions and Future Directions}{}% 9
+\BOOKMARK [1][-]{section.6}{ References}{}% 10

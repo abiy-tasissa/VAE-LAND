@@ -1,0 +1,86 @@
+\begin{thebibliography}{10}
+
+\bibitem{Zhu2017_Deep}
+X.X. Zhu, D.~Tuia, L.~Mou, G.-S. Xia, L.~Zhang, F.~Xu, and F.~Fraundorfer,
+\newblock ``Deep learning in remote sensing: A comprehensive review and list of
+  resources,''
+\newblock {\em IEEE Geoscience and Remote Sensing Magazine}, vol. 5, no. 4, pp.
+  8--36, 2017.
+
+\bibitem{Murphy2012_Machine}
+K.P. Murphy,
+\newblock {\em Machine learning: a probabilistic perspective},
+\newblock MIT press, 2012.
+
+\bibitem{ehsan2017infinite}
+M.E. Abbasnejad, A.~Dick, and A.~van~den Hengel,
+\newblock ``Infinite variational autoencoder for semi-supervised learning,''
+\newblock in {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, 2017, pp. 5888--5897.
+
+\bibitem{makhzani2015adversarial}
+A.~Makhzani, J.~Shlens, N.~Jaitly, I.~Goodfellow, and B.~Frey,
+\newblock ``Adversarial autoencoders,''
+\newblock {\em arXiv preprint arXiv:1511.05644}, 2015.
+
+\bibitem{tian2014learning}
+Fei Tian, Bin Gao, Qing Cui, Enhong Chen, and Tie-Yan Liu,
+\newblock ``Learning deep representations for graph clustering,''
+\newblock in {\em Twenty-Eighth AAAI Conference on Artificial Intelligence},
+  2014.
+
+\bibitem{song2013auto}
+Chunfeng Song, Feng Liu, Yongzhen Huang, Liang Wang, and Tieniu Tan,
+\newblock ``Auto-encoder based data clustering,''
+\newblock in {\em Iberoamerican Congress on Pattern Recognition}. Springer,
+  2013, pp. 117--124.
+
+\bibitem{xie2016unsupervised}
+Junyuan Xie, Ross Girshick, and Ali Farhadi,
+\newblock ``Unsupervised deep embedding for clustering analysis,''
+\newblock in {\em International conference on machine learning}, 2016, pp.
+  478--487.
+
+\bibitem{jiang2017variational}
+Zhuxi Jiang, Yin Zheng, Huachun Tan, Bangsheng Tang, and Hanning Zhou,
+\newblock ``Variational deep embedding: an unsupervised and generative approach
+  to clustering,''
+\newblock in {\em Proceedings of the 26th International Joint Conference on
+  Artificial Intelligence}, 2017, pp. 1965--1972.
+
+\bibitem{yang2018geodesic}
+T.~Yang, G.~Arvanitidis, D.~Fu, X.~Li, and S.~Hauberg,
+\newblock ``Geodesic clustering in deep generative models,''
+\newblock {\em arXiv preprint arXiv:1809.04747}, 2018.
+
+\bibitem{Murphy2019_Unsupervised}
+J.M. Murphy and M.~Maggioni,
+\newblock ``Unsupervised clustering and active learning of hyperspectral images
+  with nonlinear diffusion,''
+\newblock {\em IEEE Transactions on Geoscience and Remote Sensing}, vol. 57,
+  no. 3, pp. 1829--1845, 2019.
+
+\bibitem{Maggioni2019_LUND}
+M.~Maggioni and J.M. Murphy,
+\newblock ``Learning by unsupervised nonlinear diffusion,''
+\newblock {\em Journal of Machine Learning Research}, vol. 20, no. 160, pp.
+  1--56, 2019.
+
+\bibitem{Murphy2019_Spectral}
+J.M. Murphy and M.~Maggioni,
+\newblock ``Spectral-spatial diffusion geometry for hyperspectral image
+  clustering,''
+\newblock {\em IEEE Geoscience and Remote Sensing Letters}, 2019.
+
+\bibitem{Maggioni2019_LAND}
+M.~Maggioni and J.M. Murphy,
+\newblock ``Learning by active nonlinear diffusion,''
+\newblock {\em Foundations of Data Science}, vol. 1, no. 3, pp. 271, 2019.
+
+\bibitem{pourkamali2019effectiveness}
+F.~Pourkamali-Anaraki and M.B. Wakin,
+\newblock ``The effectiveness of variational autoencoders for active
+  learning,''
+\newblock {\em arXiv preprint arXiv:1911.07716}, 2019.
+
+\end{thebibliography}
