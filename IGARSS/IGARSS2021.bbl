@@ -15,8 +15,7 @@ K.P. Murphy,
 \bibitem{ehsan2017infinite}
 M.E. Abbasnejad, A.~Dick, and A.~van~den Hengel,
 \newblock ``Infinite variational autoencoder for semi-supervised learning,''
-\newblock in {\em Proceedings of the IEEE Conference on Computer Vision and
-  Pattern Recognition}, 2017, pp. 5888--5897.
+\newblock in {\em CVPR}, 2017, pp. 5888--5897.
 
 \bibitem{makhzani2015adversarial}
 A.~Makhzani, J.~Shlens, N.~Jaitly, I.~Goodfellow, and B.~Frey,
@@ -24,29 +23,26 @@ A.~Makhzani, J.~Shlens, N.~Jaitly, I.~Goodfellow, and B.~Frey,
 \newblock {\em arXiv preprint arXiv:1511.05644}, 2015.
 
 \bibitem{tian2014learning}
-Fei Tian, Bin Gao, Qing Cui, Enhong Chen, and Tie-Yan Liu,
+F.~Tian, B.~Gao, Q.~Cui, E.~Chen, and T.-Y. Liu,
 \newblock ``Learning deep representations for graph clustering,''
-\newblock in {\em Twenty-Eighth AAAI Conference on Artificial Intelligence},
-  2014.
+\newblock in {\em AAAI}, 2014.
 
 \bibitem{song2013auto}
-Chunfeng Song, Feng Liu, Yongzhen Huang, Liang Wang, and Tieniu Tan,
+C.~Song, F.~Liu, Y.~Huang, L.~Wang, and T.~Tan,
 \newblock ``Auto-encoder based data clustering,''
 \newblock in {\em Iberoamerican Congress on Pattern Recognition}. Springer,
   2013, pp. 117--124.
 
 \bibitem{xie2016unsupervised}
-Junyuan Xie, Ross Girshick, and Ali Farhadi,
+J.~Xie, R.~Girshick, and A.~Farhadi,
 \newblock ``Unsupervised deep embedding for clustering analysis,''
-\newblock in {\em International conference on machine learning}, 2016, pp.
-  478--487.
+\newblock in {\em ICML}, 2016, pp. 478--487.
 
 \bibitem{jiang2017variational}
-Zhuxi Jiang, Yin Zheng, Huachun Tan, Bangsheng Tang, and Hanning Zhou,
+Z.~Jiang, Y.~Zheng, H.~Tan, B.~Tang, and H.~Zhou,
 \newblock ``Variational deep embedding: an unsupervised and generative approach
   to clustering,''
-\newblock in {\em Proceedings of the 26th International Joint Conference on
-  Artificial Intelligence}, 2017, pp. 1965--1972.
+\newblock in {\em IJCAI}, 2017, pp. 1965--1972.
 
 \bibitem{yang2018geodesic}
 T.~Yang, G.~Arvanitidis, D.~Fu, X.~Li, and S.~Hauberg,
@@ -66,11 +62,12 @@ M.~Maggioni and J.M. Murphy,
 \newblock {\em Journal of Machine Learning Research}, vol. 20, no. 160, pp.
   1--56, 2019.
 
-\bibitem{Murphy2019_Spectral}
+\bibitem{Murphy2020_Spectral}
 J.M. Murphy and M.~Maggioni,
 \newblock ``Spectral-spatial diffusion geometry for hyperspectral image
   clustering,''
-\newblock {\em IEEE Geoscience and Remote Sensing Letters}, 2019.
+\newblock {\em IEEE Geoscience and Remote Sensing Letters}, vol. 17, no. 7, pp.
+  1243--1247, 2020.
 
 \bibitem{Maggioni2019_LAND}
 M.~Maggioni and J.M. Murphy,
