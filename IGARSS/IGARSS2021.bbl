@@ -7,6 +7,36 @@ X.X. Zhu, D.~Tuia, L.~Mou, G.-S. Xia, L.~Zhang, F.~Xu, and F.~Fraundorfer,
 \newblock {\em IEEE Geoscience and Remote Sensing Magazine}, vol. 5, no. 4, pp.
   8--36, 2017.
 
+\bibitem{yang2018geodesic}
+T.~Yang, G.~Arvanitidis, D.~Fu, X.~Li, and S.~Hauberg,
+\newblock ``Geodesic clustering in deep generative models,''
+\newblock {\em arXiv preprint arXiv:1809.04747}, 2018.
+
+\bibitem{Murphy2019_Unsupervised}
+J.M. Murphy and M.~Maggioni,
+\newblock ``Unsupervised clustering and active learning of hyperspectral images
+  with nonlinear diffusion,''
+\newblock {\em IEEE Transactions on Geoscience and Remote Sensing}, vol. 57,
+  no. 3, pp. 1829--1845, 2019.
+
+\bibitem{Maggioni2019_LUND}
+M.~Maggioni and J.M. Murphy,
+\newblock ``Learning by unsupervised nonlinear diffusion,''
+\newblock {\em Journal of Machine Learning Research}, vol. 20, no. 160, pp.
+  1--56, 2019.
+
+\bibitem{Murphy2020_Spectral}
+J.M. Murphy and M.~Maggioni,
+\newblock ``Spectral-spatial diffusion geometry for hyperspectral image
+  clustering,''
+\newblock {\em IEEE Geoscience and Remote Sensing Letters}, vol. 17, no. 7, pp.
+  1243--1247, 2020.
+
+\bibitem{Maggioni2019_LAND}
+M.~Maggioni and J.M. Murphy,
+\newblock ``Learning by active nonlinear diffusion,''
+\newblock {\em Foundations of Data Science}, vol. 1, no. 3, pp. 271, 2019.
+
 \bibitem{Murphy2012_Machine}
 K.P. Murphy,
 \newblock {\em Machine learning: a probabilistic perspective},
@@ -44,35 +74,84 @@ Z.~Jiang, Y.~Zheng, H.~Tan, B.~Tang, and H.~Zhou,
   to clustering,''
 \newblock in {\em IJCAI}, 2017, pp. 1965--1972.
 
-\bibitem{yang2018geodesic}
-T.~Yang, G.~Arvanitidis, D.~Fu, X.~Li, and S.~Hauberg,
-\newblock ``Geodesic clustering in deep generative models,''
-\newblock {\em arXiv preprint arXiv:1809.04747}, 2018.
+\bibitem{chen2014deep}
+Y.~Chen, Z.~Lin, X.~Zhao, G.~Wang, and Y.~Gu,
+\newblock ``Deep learning-based classification of hyperspectral data,''
+\newblock {\em IEEE Journal of Selected topics in applied earth observations
+  and remote sensing}, vol. 7, no. 6, pp. 2094--2107, 2014.
 
-\bibitem{Murphy2019_Unsupervised}
+\bibitem{chen2016deep}
+Y.~Chen, H.~Jiang, C.~Li, X.~Jia, and P.~Ghamisi,
+\newblock ``Deep feature extraction and classification of hyperspectral images
+  based on convolutional neural networks,''
+\newblock {\em IEEE Transactions on Geoscience and Remote Sensing}, vol. 54,
+  no. 10, pp. 6232--6251, 2016.
+
+\bibitem{li2017spectral}
+Y.~Li, H.~Zhang, and Q.~Shen,
+\newblock ``Spectral--spatial classification of hyperspectral imagery with 3d
+  convolutional neural network,''
+\newblock {\em Remote Sensing}, vol. 9, no. 1, pp. 67, 2017.
+
+\bibitem{he2017multi}
+M.~He, B.~Li, and H.~Chen,
+\newblock ``Multi-scale 3d deep convolutional neural network for hyperspectral
+  image classification,''
+\newblock in {\em ICIP}. IEEE, 2017, pp. 3904--3908.
+
+\bibitem{paoletti2019deep}
+M.E. Paoletti, J..M. Haut, J.~Plaza, and A.~Plaza,
+\newblock ``Deep learning classifiers for hyperspectral imaging: A review,''
+\newblock {\em ISPRS Journal of Photogrammetry and Remote Sensing}, vol. 158,
+  pp. 279--317, 2019.
+
+\bibitem{zhang20191d}
+H.~Zhang, L.~Meng, X.~Wei, X.~Tang, X.~Tang, X.~Wang, B.~Jin, and W.~Yao,
+\newblock ``1d-convolutional capsule network for hyperspectral image
+  classification,''
+\newblock {\em arXiv preprint arXiv:1903.09834}, 2019.
+
+\bibitem{cohn1995active}
+D.A. Cohn, Z.~Ghahramani, and M.I. Jordan,
+\newblock ``Active learning with statistical models,''
+\newblock in {\em NIPS}, 1995, pp. 705--712.
+
+\bibitem{mackay1992information}
+D.~MacKay,
+\newblock ``Information-based objective functions for active data selection,''
+\newblock {\em Neural Computation}, vol. 4, no. 4, pp. 590--604, 1992.
+
+\bibitem{liu2016active}
+P.~Liu, H.~Zhang, and K.B. Eom,
+\newblock ``Active deep learning for classification of hyperspectral images,''
+\newblock {\em IEEE Journal of Selected Topics in Applied Earth Observations
+  and Remote Sensing}, vol. 10, no. 2, pp. 712--724, 2016.
+
+\bibitem{wang2017novel}
+Z.~Wang, B.~Du, L.~Zhang, L.~Zhang, and X.~Jia,
+\newblock ``A novel semisupervised active-learning algorithm for hyperspectral
+  image classification,''
+\newblock {\em IEEE Transactions on Geoscience and Remote Sensing}, vol. 55,
+  no. 6, pp. 3071--3083, 2017.
+
+\bibitem{murphy2018iterative}
 J.M. Murphy and M.~Maggioni,
-\newblock ``Unsupervised clustering and active learning of hyperspectral images
-  with nonlinear diffusion,''
-\newblock {\em IEEE Transactions on Geoscience and Remote Sensing}, vol. 57,
-  no. 3, pp. 1829--1845, 2019.
+\newblock ``Iterative active learning with diffusion geometry for hyperspectral
+  images,''
+\newblock in {\em WHISPERS}, 2018, pp. 1--5.
 
-\bibitem{Maggioni2019_LUND}
-M.~Maggioni and J.M. Murphy,
-\newblock ``Learning by unsupervised nonlinear diffusion,''
-\newblock {\em Journal of Machine Learning Research}, vol. 20, no. 160, pp.
-  1--56, 2019.
+\bibitem{tuia2009active}
+D.~Tuia, F.~Ratle, F.~Pacifici, M.F. Kanevski, and W.J. Emery,
+\newblock ``Active learning methods for remote sensing image classification,''
+\newblock {\em IEEE Transactions on Geoscience and Remote Sensing}, vol. 47,
+  no. 7, pp. 2218--2232, 2009.
 
-\bibitem{Murphy2020_Spectral}
-J.M. Murphy and M.~Maggioni,
-\newblock ``Spectral-spatial diffusion geometry for hyperspectral image
-  clustering,''
-\newblock {\em IEEE Geoscience and Remote Sensing Letters}, vol. 17, no. 7, pp.
-  1243--1247, 2020.
-
-\bibitem{Maggioni2019_LAND}
-M.~Maggioni and J.M. Murphy,
-\newblock ``Learning by active nonlinear diffusion,''
-\newblock {\em Foundations of Data Science}, vol. 1, no. 3, pp. 271, 2019.
+\bibitem{tuia2011survey}
+D.~Tuia, M.~Volpi, L.~Copa, M.~Kanevski, and J.~Munoz-Mari,
+\newblock ``A survey of active learning algorithms for supervised remote
+  sensing image classification,''
+\newblock {\em IEEE Journal of Selected Topics in Signal Processing}, vol. 5,
+  no. 3, pp. 606--617, 2011.
 
 \bibitem{pourkamali2019effectiveness}
 F.~Pourkamali-Anaraki and M.B. Wakin,
