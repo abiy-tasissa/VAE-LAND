@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  2 JAN 2021 10:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  7 JAN 2021 17:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -285,6 +285,10 @@ Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
 \c@subfigure=\count111
 \c@subtable=\count112
 )
+(/usr/local/texlive/2018/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write3
+
+Excluding comment 'comment')
 (/usr/local/texlive/2018/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
 \c@AlgoLine=\count113
@@ -377,11 +381,7 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \ALC@tlm=\skip66
 \algorithmicindent=\skip67
 )
-(./IGARSS2021.aux
-
-LaTeX Warning: Label `fig:SalinasA' multiply defined.
-
-)
+(./IGARSS2021.aux)
 \openout1 = `IGARSS2021.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
@@ -399,7 +399,8 @@ LaTeX Font Info:    ... okay on input line 50.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
 LaTeX Font Info:    ... okay on input line 50.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 50.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -448,8 +449,8 @@ LaTeX Info: Redefining \pageref on input line 50.
 LaTeX Info: Redefining \nameref on input line 50.
 
 (./IGARSS2021.out) (./IGARSS2021.out)
-\@outlinefile=\write3
-\openout3 = `IGARSS2021.out'.
+\@outlinefile=\write4
+\openout4 = `IGARSS2021.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
@@ -480,50 +481,43 @@ im-ages, vari-a-tional au-
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2]
-Overfull \hbox (15.0pt too wide) detected at line 145
+Overfull \hbox (15.0pt too wide) detected at line 141
 [][] 
  []
 
+<Images/SalinasA_BandSum-crop.pdf, id=92, 357.335pt x 345.29pt>
+File: Images/SalinasA_BandSum-crop.pdf Graphic file (type pdf)
+<use Images/SalinasA_BandSum-crop.pdf>
+Package pdftex.def Info: Images/SalinasA_BandSum-crop.pdf  used on input line 1
+49.
+(pdftex.def)             Requested size: 116.48341pt x 112.5551pt.
+<Images/SalinasA_GT-crop.pdf, id=94, 357.335pt x 345.29pt>
+File: Images/SalinasA_GT-crop.pdf Graphic file (type pdf)
+<use Images/SalinasA_GT-crop.pdf>
+Package pdftex.def Info: Images/SalinasA_GT-crop.pdf  used on input line 150.
+(pdftex.def)             Requested size: 116.48341pt x 112.5551pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--152
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Images/VAE_Schematics.pdf)
+: PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<Images/VAE_Schematics.pdf, id=96, 794.97pt x 614.295pt>
+File: Images/VAE_Schematics.pdf Graphic file (type pdf)
+<use Images/VAE_Schematics.pdf>
+Package pdftex.def Info: Images/VAE_Schematics.pdf  used on input line 155.
+(pdftex.def)             Requested size: 227.90501pt x 150.14473pt.
+
+Underfull \hbox (badness 2269) in paragraph at lines 146--160
+\OT1/ptm/m/n/10 at []$https : / / github . com / abiy-[]tasissa / VAE-[]LAND$[]
+. Our test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--160
 \OT1/ptm/m/n/10 Hyperspectral[]Remote[]Sensing[]Scenes # Salinas-[]A[]scene$[])
 .
  []
 
-<Images/SalinasA_BandSum-crop.pdf, id=125, 357.335pt x 345.29pt>
-File: Images/SalinasA_BandSum-crop.pdf Graphic file (type pdf)
-<use Images/SalinasA_BandSum-crop.pdf>
-Package pdftex.def Info: Images/SalinasA_BandSum-crop.pdf  used on input line 1
-54.
-(pdftex.def)             Requested size: 116.48341pt x 112.5551pt.
-<Images/SalinasA_GT-crop.pdf, id=127, 357.335pt x 345.29pt>
-File: Images/SalinasA_GT-crop.pdf Graphic file (type pdf)
-<use Images/SalinasA_GT-crop.pdf>
-Package pdftex.def Info: Images/SalinasA_GT-crop.pdf  used on input line 155.
-(pdftex.def)             Requested size: 116.48341pt x 112.5551pt.
-
-LaTeX Warning: File `Images/VAE_Schematics.pdf' not found on input line 161.
-
-
-./IGARSS2021.tex:161: Package pdftex.def Error: File `Images/VAE_Schematics.pdf
-' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.161 ...3.5cm 1cm 1cm]{Images/VAE_Schematics.pdf}
-                                                  
-? s
-OK, entering \scrollmode...
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 161.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [3 <./Images/SalinasA_BandSum-crop.pdf> <./Images/SalinasA_GT-crop.pdf>]
+[2]
 Package epstopdf Info: Source file: <Images/salinasa_results_improved.eps>
 (epstopdf)                    date: 2020-12-20 22:24:38
 (epstopdf)                    size: 106425 bytes
@@ -533,71 +527,67 @@ rted-to.pdf>
 (epstopdf)                    size: 48895 bytes
 (epstopdf)             Command: <repstopdf --outfile=Images/salinasa_results_im
 proved-eps-converted-to.pdf Images/salinasa_results_improved.eps>
-(epstopdf)             \includegraphics on input line 173.
+(epstopdf)             \includegraphics on input line 166.
 Package epstopdf Info: Output file is already uptodate.
-<Images/salinasa_results_improved-eps-converted-to.pdf, id=169, 429.605pt x 316
+<Images/salinasa_results_improved-eps-converted-to.pdf, id=144, 429.605pt x 316
 .18124pt>
 File: Images/salinasa_results_improved-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use Images/salinasa_results_improved-eps-converted-to.pdf>
 Package pdftex.def Info: Images/salinasa_results_improved-eps-converted-to.pdf 
- used on input line 173.
+ used on input line 166.
 (pdftex.def)             Requested size: 227.90501pt x 167.73447pt.
- (./IGARSS2021.bbl
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \hbox (badness 1337) in paragraph at lines 78--82
+ [3 <./Images/SalinasA_BandSum-crop.pdf> <./Images/SalinasA_GT-crop.pdf> <./Ima
+ges/VAE_Schematics.pdf> <./Images/salinasa_results_improved-eps-converted-to.pd
+f>]
+(./IGARSS2021.bbl
+Underfull \hbox (badness 1337) in paragraph at lines 62--66
 \OT1/ptm/m/n/10 ``Deep learning-based clas-si-fi-ca-tion of hy-per-spec-tral
  []
 
-[4 <./Images/salinasa_results_improved-eps-converted-to.pdf>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 187.
- [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 187.
-
-(./IGARSS2021.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 187.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 187.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 180.
+ [4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 180.
+ (./IGARSS2021.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 180.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 180.
 Package rerunfilecheck Info: File `IGARSS2021.out' has not changed.
 (rerunfilecheck)             Checksum: 229234EF09E61325D10F61920611EFB3;484.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 187.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 180.
  ) 
 Here is how much of TeX's memory you used:
- 9303 strings out of 492649
- 138181 string characters out of 6129622
- 263681 words of memory out of 5000000
- 12982 multiletter control sequences out of 15000+600000
- 29194 words of font info for 73 fonts, out of 8000000 for 9000
+ 9297 strings out of 492649
+ 138307 string characters out of 6129622
+ 270420 words of memory out of 5000000
+ 12983 multiletter control sequences out of 15000+600000
+ 28816 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,14n,39p,1608b,816s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,14n,39p,1612b,818s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texliv
-e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/20
-18/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist/
-fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-d
-ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2018/texmf-dist/font
-s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/ur
-w/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/u
-tmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb
->
-Output written on IGARSS2021.pdf (5 pages, 670262 bytes).
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts
+/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/ur
+w/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/ut
+mri8a.pfb>
+Output written on IGARSS2021.pdf (4 pages, 673726 bytes).
 PDF statistics:
- 259 PDF objects out of 1000 (max. 8388607)
- 221 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
- 92 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 247 PDF objects out of 1000 (max. 8388607)
+ 209 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
+ 103 words of extra memory for PDF output out of 10000 (max. 10000000)
 
