@@ -71,10 +71,17 @@ We propose an active learning method for HSI based on deep feature extraction an
 
 \section{Variational Autoencoders }
 
-A variational autoencoder (VAE) is a generative model that learns useful latent features for a high dimensional data \cite{kingma2014auto}. In the inference part of a VAE, an encoding network maps $x \in \R^N $ to a latent variable  $z\in \R^{D}$ such that $z \sim q(z|x)$. In the generative part of VAE, a decoding network maps the extracted low dimensional latent variable to $\hat{x}$ such that $\hat{x}\sim p(x|z)$. Typically, a Gaussian random variable $p(z)=N(0,I)$ is used for the distribution of the latent variable. Given this, the VAE optimization consists of two terms: (a) A reconstruction loss $\L_1=  \E_{z \sim q(z|x)} \log(p(x|z))$ that enforces that the reconstructed output $\hat{x}$ is similar to the input $x$ and (b) A Kullback-Leibler divergence loss $\L_2 =  KL(q(z|x,\phi),N(0,I))$   that enforces that $q(z|x)$ agrees with $p(z)$,. The encoder and decoder model can be jointly trained by maximizing the total loss $\L_1+\L_2$. 
+In an autoencoder architecture, an input data is  cascaded through nonlinear layers to obtain a latent representation. The latent representation is then cascaded  through nonlinear layers to obtain an output data. These two stages respectively define the encoder and decoder. Typically, a loss function that enforces the reconstructed output to be similar to the input is minimized and the trained autoencoder learns
+a low dimensional latent feature useful for downstream tasks. In contrast to the autoencoder, in the variational autoencoder (VAE) \cite{kingma2014auto}, the output of the encoder is not deterministic but parameters of a distribution.  In particular, an encoding network maps $x \in \R^N $  and obtains parameters of the latent variable distribution $q(z|x)$. A latent feature $z$  sampled from this distribution is an input to a decoder that outputs $\hat{x}$ such that $\hat{x}\sim p(x|z)$. A typical prior is a Gaussian random variable $p(z)=N(0,I)$ for the distribution of the latent variable. Given this, the VAE optimization consists of two terms: (a) A reconstruction loss $\L_1=  \E_{z \sim q(z|x)} \log(p(x|z))$ that enforces that the reconstructed output $\hat{x}$ is similar to the input $x$ and (b) A Kullback-Leibler divergence loss $\L_2 =  KL(q(z|x),N(0,I))$   that enforces that $q(z|x)$ agrees with $p(z)$,. The encoder and decoder model can be jointly trained by maximizing the total loss $\L_1+\L_2$. 
+
+
+%A variational autoencoder (VAE) is a generative model that learns useful latent features for a high dimensional data \cite{kingma2014auto}. In the inference part of a VAE, an encoding network maps $x \in \R^N $ to a latent variable  $z\in \R^{D}$ such that $z \sim q(z|x)$. In the generative part of VAE, a decoding network maps the extracted low dimensional latent variable to $\hat{x}$ such that $\hat{x}\sim p(x|z)$. Typically, a Gaussian random variable $p(z)=N(0,I)$ is used for the distribution of the latent variable. Given this, the VAE optimization consists of two terms: (a) A reconstruction loss $\L_1=  \E_{z \sim q(z|x)} \log(p(x|z))$ that enforces that the reconstructed output $\hat{x}$ is similar to the input $x$ and (b) A Kullback-Leibler divergence loss $\L_2 =  KL(q(z|x,\phi),N(0,I))$   that enforces that $q(z|x)$ agrees with $p(z)$,. The encoder and decoder model can be jointly trained by maximizing the total loss $\L_1+\L_2$. 
 
 
 \begin{comment}
+
+
+
 
 We now describe VAEs following the exposition in \cite{yang2018geodesic}. Let $x \in \R^N $ and consider a latent variable model $p_{\theta}(x) = \int p(x|z;\theta)p(z)\,dz$. The variable $z\in \R^{D}$, $D\ll N$, is a latent variable and provides a low-dimensional parametrization of the data $x$. The goal of VAE is to maximize the probability of  data samples generated as $p(x)$. In the inference part of VAE, the training procedure maps a data point $x$  to its latent representation $z$ such that the $z$ adheres to the distribution $p(z)$. 
 
@@ -85,31 +92,49 @@ The generative part of VAE considers the reconstruction of a data sample given t
 \end{comment}
 
 \subsection{Learning by Active Nonlinear Diffusion}
-In this paper, we use an active learning algorithm for high dimensional data based on diffusion geometry \cite{Murphy2019_Unsupervised, Maggioni2019_LUND, Murphy2020_Spectral}. The algorithm, learning by active nonlinear diffusion (LAND) \cite{Maggioni2019_LAND}, is a semisupervised algorithm that takes into account the geometry of the data to identify the most important points to be query for labels. A key advantage of LAND is that it provides rigorous theoretical performance guarantees and handles general clusters that could be nonlinear, live in a high ambient dimension, and may be corrupted by noise and outliers \cite{Maggioni2019_LAND}.
 
-Consider an HSI $X=\{x_{i}\}_{i=1}^{n}\subset\mathbb{R}^{N}$, where each pixel is represented as a point in $\R^{N}$ where $N$ is the number of spectral bands. Let $W$ to be the $n\times n$ weight matrix defined as $W_{ij}=\exp(-\|x_{i}-x_{j}\|_{2}^{2}/\sigma^{2}), x_{j}\in NN_{k}(x_{i})$ and $W(x_{i},x_{j})=0$ otherwise, where $NN_{k}(x_{i})$ is the set of $k$-nearest neighbors of $x_{i}$ in $X$ with respect to Euclidean distance and $\sigma$ is a scale parameter. Given the weight matrix, the degree of $x$ is $\deg(x_{i}):=\sum_{x_{j}\in X}W_{ij}$. A random walk on $X$ can be defined using the $n\times n$ transition matrix $P_{ij}={W_{ij}}\big/{\deg(x_{i})}.$  
-By construction, $P$ has a spectral decomposition $\{(\lambda_{i},\Psi_{i})\}_{i=1}^{n}$, and we define the \emph{diffusion distance at time $t$} between $x_{i},x_{j}\in X$ as $D_{t}(x_{i},x_{j})=\sqrt{\sum\nolimits_{\ell=1}^{n}\lambda_{\ell}^{2t}(\Psi_{\ell}(x_{i})-\Psi_{\ell}(x_{j}))^{2}}$.  The parameter $t$ in diffusion distance informs how long the diffusion process runs.  In this paper, we set $t$ to be 30; diffusion learning is relatively robust to choice of $t$ \cite{Murphy2019_Unsupervised}. 
 
-An important part of the LAND algorithm is to determine the data points which one should query for labels. This is achieved using a kernel density estimator and diffusion geometry.  Consider the density estimator $p(x)=\sum_{y\in NN_{k}(x)}\exp(-\|x-y\|_{2}^{2}/\sigma_{0}^{2})$
-with $\sigma_0$ denoting a scale parameter. Let 
+
+The active learning algorithm employed in this paper is based on the ideas in \cite{Murphy2019_Unsupervised, Maggioni2019_LUND, Murphy2020_Spectral}.  In \cite{Maggioni2019_LAND}, the authors propose a semisupervised algorithm, learning by active nonlinear diffusion (LAND), that obtains the most important data points to query  for labels.  Important features of LAND are (a) It is a principled algorithm with provable performance guarantees, (b) It accounts for nonlinear clusters possibly in high dimensions and (c) It is robust to noise and outliers \cite{Maggioni2019_LAND}.
+
+%In this paper, we use an active learning algorithm for high dimensional data based on diffusion geometry \cite{Murphy2019_Unsupervised, Maggioni2019_LUND, Murphy2020_Spectral}. The algorithm, learning by active nonlinear diffusion (LAND) \cite{Maggioni2019_LAND}, is a semisupervised algorithm that takes into account the geometry of the data to identify the most important points to be query for labels. A key advantage of LAND is that it provides rigorous theoretical performance guarantees and handles general clusters that could be nonlinear, live in a high ambient dimension, and may be corrupted by noise and outliers 
+
+We represent an HSI as $X=\{x_{i}\}_{i=1}^{n}\subset\mathbb{R}^{N}$ where each pixel is a point in $\R^{N}$ where $N$ is the number of spectral bands. Let $NN_{k}(x_{i})$ denote the set of $k$-nearest neighbors of $x_{i}$ in $X$ using the Euclidean distance metric.
+The $n\times n$ weight matrix $W$ is defined as $W_{ij}=\exp(-\|x_{i}-x_{j}\|_{2}^{2}/\sigma^{2}), x_{j}\in NN_{k}(x_{i})$ with $\sigma$ denoting a scale parameter. With this, the notion of the degree of $x$ naturally follows $\deg(x_{i}):=\sum_{x_{j}\in X}W_{ij}$. To define a random walk on $X$, we employ the $n\times n$ transition matrix $P_{ij}={W_{ij}}\big/{\deg(x_{i})}.$ It can be easily verified that $P$ has a spectral decomposition $\{(\lambda_{i},\Psi_{i})\}_{i=1}^{n}$. The \emph{diffusion distance at time $t$} between $x_{i},x_{j}\in X$ is defined as $D_{t}(x_{i},x_{j})=\sqrt{\sum\nolimits_{\ell=1}^{n}\lambda_{\ell}^{2t}(\Psi_{\ell}(x_{i})-\Psi_{\ell}(x_{j}))^{2}}$.  We note that $t$ tells us how long the diffusion process runs. In  \cite{Murphy2019_Unsupervised}, it is shown that diffusion learning is not sensitive to choice of $t$. Given this, in this paper,  we use $t=30$ for all simulations.
+
+
+%The parameter $t$ in diffusion distance informs how long the diffusion process runs.  In this paper, we set $t$ to be 30; diffusion learning is relatively robust to choice of $t$ \cite{Murphy2019_Unsupervised}. 
+
+
+%Consider an HSI $X=\{x_{i}\}_{i=1}^{n}\subset\mathbb{R}^{N}$, where each pixel is represented as a point in $\R^{N}$ where $N$ is the number of spectral bands. Let $W$ to be the $n\times n$ weight matrix defined as $W_{ij}=\exp(-\|x_{i}-x_{j}\|_{2}^{2}/\sigma^{2}), x_{j}\in NN_{k}(x_{i})$ and $W(x_{i},x_{j})=0$ otherwise, where $NN_{k}(x_{i})$ is the set of $k$-nearest neighbors of $x_{i}$ in $X$ with respect to Euclidean distance and $\sigma$ is a scale parameter. Given the weight matrix, the degree of $x$ is $\deg(x_{i}):=\sum_{x_{j}\in X}W_{ij}$. A random walk on $X$ can be defined using the $n\times n$ transition matrix $P_{ij}={W_{ij}}\big/{\deg(x_{i})}.$  
+%By construction, $P$ has a spectral decomposition $\{(\lambda_{i},\Psi_{i})\}_{i=1}^{n}$, and we define the \emph{diffusion distance at time $t$} between $x_{i},x_{j}\in X$ as $D_{t}(x_{i},x_{j})=\sqrt{\sum\nolimits_{\ell=1}^{n}\lambda_{\ell}^{2t}(\Psi_{\ell}(x_{i})-\Psi_{\ell}(x_{j}))^{2}}$.  The parameter $t$ in diffusion distance informs how long the diffusion process runs.  In this paper, we set $t$ to be 30; diffusion learning is relatively robust to choice of $t$ \cite{Murphy2019_Unsupervised}. 
+
+The main part of the LAND algorithm is to identify points for which one should obtain labels. LAND uses kernel density estimator and diffusion geometry for this task. In particular, the density estimator is defined as $p(x)=\sum_{y\in NN_{k}(x)}\exp(-\|x-y\|_{2}^{2}/\sigma_{0}^{2})$ with $\sigma_0$ denoting a scale parameter.
+%An important part of the LAND algorithm is to determine the data points which one should query for labels. This is achieved using a kernel density estimator and diffusion geometry.  Consider the density estimator $p(x)=\sum_{y\in NN_{k}(x)}\exp(-\|x-y\|_{2}^{2}/\sigma_{0}^{2})$
+%with $\sigma_0$ denoting a scale parameter. Let 
 \begin{align}\label{eqn:rho}
 \rho_{t}(x) &=
 \begin{cases}
 \displaystyle\min_{p(y)\ge p(x), x\neq y} D_{t}(x,y), &x\neq \displaystyle\argmax_{z}p(z) \\
 \displaystyle\max_{y\in X} D_{t}(x,y), & x=\displaystyle\argmax_{z}p(z)
 \end{cases}
-\end{align} be the ($t$-dependent) diffusion distance between a point and its nearest diffusion neighbor of higher density if $x$ is not the maximizer of $p(x)$, and the maximum diffusion distance to another point if $x$ is the maximizer of $p(x)$.  The modes of the data are determined as the maximizers of $\Dt(x)=p(x)\rho_{t}(x)$.  A large $\Dt$ value indicates a high-density point that is $D_{t}$-far from other high density points. In LAND, the modes of $X$ are characterized as maximizers of $\Dt$. Diffusion distances and density can also employed to label all other points relative to these modes. We refer the interested reader to 
-\cite{Maggioni2019_LAND}. 
+\end{align} 
+It is the case that the modes of the data are the maximizers of $\Dt(x)=p(x)\rho_{t}(x)$.  Given these models, to propagate the labels to other data points, LAND considers the diffusion distances and density.  Details of this can be found in \cite{Maggioni2019_LAND}. 
+%be the ($t$-dependent) diffusion distance between a point and its nearest diffusion neighbor of higher density if $x$ is not the maximizer of $p(x)$, and the maximum diffusion distance to another point if $x$ is the maximizer of $p(x)$.  The modes of the data are determined as the maximizers of $\Dt(x)=p(x)\rho_{t}(x)$.  A large $\Dt$ value indicates a high-density point that is $D_{t}$-far from other high density points. In LAND, the modes of $X$ are characterized as maximizers of $\Dt$. Diffusion distances and density can also employed to label all other points relative to these modes. We refer the interested reader to 
+%\cite{Maggioni2019_LAND}. 
 
 
 \subsection{Related Work}
-In recent years, deep generative methods, such as \emph{generative adversarial network (GANs)} and \emph{variational autoencoder networks (VAEs)}, have been used as feature extraction tools and successfully applied to many machine learning tasks \cite{ehsan2017infinite,makhzani2015adversarial}. In the context of the clustering problem, a set of methods, known as deep clustering, propose learning features of the data and clustering simultaneously, showing strong empirical results \cite{tian2014learning,song2013auto,xie2016unsupervised}. In the context of HSI images, several works have employed different deep learning architectures to extract essential features for downstream tasks such as classification \cite{chen2014deep,chen2016deep,li2017spectral,he2017multi,paoletti2019deep,zhang20191d}. 
+In recent years, deep generative methods, such as \emph{generative adversarial network (GANs)} and \emph{variational autoencoder networks (VAEs)}, have been used as feature extraction in many machine learning tasks \cite{ehsan2017infinite,makhzani2015adversarial}. In the context of clustering, a set of methods, known as deep clustering, propose learning features of the data and clustering simultaneously, showing strong empirical results \cite{tian2014learning,song2013auto,xie2016unsupervised}. For HSI images, several works have employed different deep learning architectures to extract essential features for downstream tasks such as classification \cite{chen2014deep,chen2016deep,li2017spectral,he2017multi,paoletti2019deep}. 
 
-Active learning is a learning paradigm where the user has the ability to select the training data\cite{cohn1995active,mackay1992information}.  The underlying idea is that a few informative training samples could be sufficient for training an algorithm and obtaining accurate results. This learning framework has been used in remote sensing for hyperspectral image classification\cite{liu2016active,wang2017novel,murphy2018iterative,tuia2009active}.  The main idea in this paper is that the active learning process depends on the representation and geometry of the data. The closest work to ours is  \cite{pourkamali2019effectiveness} where the authors combine active learning with variational autoencoders. Therein, K-means clustering is first used to partition the space and then labels are acquired using uniform random sampling in each partition. Given the labels, a classifier is then trained in the latent space for the prediction task. One of the highlights of the proposed method is that the clustering algorithm LAND handles a more broad class of cluster geometries than K-means does.
+Active learning is a learning paradigm where the user has the ability to select the training data\cite{cohn1995active,mackay1992information}.  The underlying idea is that a few informative training samples could be sufficient for training an algorithm and obtaining accurate results. This framework has been used in remote sensing for HSI image classification\cite{liu2016active,wang2017novel,murphy2018iterative,tuia2009active}.  The main idea in this paper is that the active learning process depends on the representation and geometry of the data. The closest work to ours is  \cite{pourkamali2019effectiveness} where the authors combine active learning with VAEs. Therein, K-means clustering is first used to partition the space and then labels are acquired using uniform random sampling in each partition. Given the labels, a classifier is then trained in the latent space for the prediction task. One of the highlights of the proposed method is that the clustering algorithm LAND handles a more broad class of cluster geometries than K-means does. The work in \cite{li2020variational} proposes a VAE architecture that learns a diffusion process 
+%and show the superiority of the principled approach through theoretical results and numerical experiments. 
+In contrast to   \cite{li2020variational}, our method is in the active learning framework and the feature extraction
+and diffusion process via LAND are decoupled. 
 
 \section{Proposed Algorithm}
 \label{sec:ProposedAlgorithm}
-We propose an active learning algorithm, VAE-LAND (see Algorithm \ref{alg:VALAND}), which has two main stages. The first stage is feature extraction of an unlabeled high-dimensional dataset using a variational autoencoder. The second stage employs the LAND active learning diffusion based clustering algorithm to infer the true labels.  The proposed algorithm combines the power of variational autoencoders to extract features and uses diffusion geometry on graphs to find impactful labels to query, which then propagate to other points. 
+We propose an active learning algorithm, VAE-LAND (see Algorithm \ref{alg:VALAND}), which has two main stages. The first stage is feature extraction of an unlabeled high-dimensional dataset using a VAE. The second stage employs the LAND algorithm to infer the true labels.  The proposed algorithm combines the power of VAEs to extract features and uses diffusion geometry on graphs to find impactful labels to query, which then propagate to other points. 
 
 %To summarize, our proposed algorithm has two main steps.  We first use an unsupervised VAE to perform a low-dimensional embedding on the data and then second cluster the latent representation of the data using LAND. 
 
@@ -118,17 +143,19 @@ We propose an active learning algorithm, VAE-LAND (see Algorithm \ref{alg:VALAND
 	\caption{\label{alg:VALAND}Variational Autoencoder Learning by Active Nonlinear Diffusion (VALAND)}
 	\flushleft
 	\flushleft
-	\textbf{Input:} $\{x_{i}\}_{i=1}^{n}$ (Unlabeled Data); $\{(\lambda_{\ell},\psi_{\ell})\}_{\ell=1}^{M}$ (Spectral Decomposition of $P$); $\{p(x_{i})\}_{i=1}^{n}$ (Kernel Density Estimate);  $\{\rho_{t}(x_{i})\}_{i=1}^{n}$ (\ref{eqn:rho}); $t$ (Time Parameter); $B$ (Budget); $\mathcal{O}$ (Labeling Oracle)
+	\textbf{Input:} $\{x_{i}\}_{i=1}^{n}$ (Unlabeled Data);  $t$ (Time Parameter); $B$ (Budget); $\mathcal{O}$ (Labeling Oracle)
 	
-	\vspace{5pt}
+	\vspace{3pt}
 	
 	\textbf{Output:} $Y$ (Labels)
 	
-		\vspace{5pt}
+		\vspace{3pt}
 
 
 	\begin{algorithmic}[1]
 	\STATE Run VAE on unlabeled data to obtain  the latent representation $X = \{\hx_{i}\}_{i=1}^{n}$.  
+\STATE Compute  spectral decomposition of $P$ $\{(\lambda_{\ell},\psi_{\ell})\}_{\ell=1}^{M}$
+\STATE Compute kernel density estimate $\{p(\hx_{i})\}_{i=1}^{n}$;  $\{\rho_{t}(\hx_{i})\}_{i=1}^{n}$ (\ref{eqn:rho});
 	\STATE Compute $\Dt(\hx_{i})=p(\hx_{i})\rho_{t}(\hx_{i})$.  
 	\STATE Sort the data in decreasing $\Dt$ value to\ 
 	acquire the ordering $\{\hx_{m_{i}}\}_{i=1}^{n}$.\FOR{$i=1:B$}
