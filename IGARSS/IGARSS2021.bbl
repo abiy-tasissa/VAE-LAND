@@ -8,7 +8,7 @@ X.X. Zhu, D.~Tuia, L.~Mou, G.-S. Xia, L.~Zhang, F.~Xu, and F.~Fraundorfer,
 
 \bibitem{kingma2014auto}
 D.P. Kingma and M.~Welling,
-\newblock ``Auto-encoding variational bayes,''
+\newblock ``Auto-encoding variational {B}ayes,''
 \newblock {\em Stat}, vol. 1050, 2014.
 
 \bibitem{Murphy2019_Unsupervised}
@@ -72,14 +72,14 @@ Y.~Chen, H.~Jiang, C.~Li, X.~Jia, and P.~Ghamisi,
 
 \bibitem{li2017spectral}
 Y.~Li, H.~Zhang, and Q.~Shen,
-\newblock ``Spectral--spatial classification of hyperspectral imagery with 3d
+\newblock ``Spectral--spatial classification of hyperspectral imagery with 3{D}
   convolutional neural network,''
 \newblock {\em Remote Sens.}, vol. 9, no. 1, 2017.
 
 \bibitem{he2017multi}
 M.~He, B.~Li, and H.~Chen,
-\newblock ``Multi-scale 3d deep convolutional neural network for hyperspectral
-  image classification,''
+\newblock ``Multi-scale 3{D} deep convolutional neural network for
+  hyperspectral image classification,''
 \newblock in {\em ICIP}. IEEE, 2017.
 
 \bibitem{paoletti2019deep}

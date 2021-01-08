@@ -69,11 +69,16 @@ We propose an active learning method for HSI based on deep feature extraction an
 %%%
 %%%
 
-\section{Variational Autoencoders }
+\section{Background}
 \label{sec:vaes}
 
-In an autoencoder architecture, input data is cascaded through nonlinear layers to obtain a latent representation. The latent representation is then cascaded  through nonlinear layers to obtain an output data. These two stages respectively define the encoder and decoder. Typically, a loss function that enforces the reconstructed output to be similar to the input is minimized and the trained autoencoder learns
-a low dimensional latent feature useful for downstream tasks. In contrast to the autoencoder, in the variational autoencoder (VAE) \cite{kingma2014auto}, the output of the encoder is not a deterministic map but parameters of a distribution.  In particular, an encoding network maps $x \in \R^N$ and obtains parameters of the latent variable distribution $q(z|x)$. A latent feature $z$  sampled from this distribution is an input to a decoder that outputs $\hat{x}$ such that $\hat{x}\sim p(x|z)$. A typical prior for the distribution of the latent variable is a Gaussian random variable $p(z)\sim N(0,I)$. Given this, the VAE optimization consists of two terms: (i) a reconstruction loss $\L_1=  \E_{z \sim q(z|x)} \log(p(x|z))$ that enforces that the reconstructed output $\hat{x}$ is similar to the input $x$; and (ii) a Kullback-Leibler divergence loss $\L_2 =  KL(q(z|x),N(0,I))$  that enforces that $q(z|x)$ agrees with $p(z)$. The encoder and decoder model can be jointly trained by maximizing the total loss $\L_1+\L_2$. 
+
+\subsection{Variational Autoencoders}
+\label{subsec:vaes}
+
+
+In an autoencoder architecture, input data is cascaded through nonlinear layers to obtain a latent representation. The latent representation is then cascaded  through nonlinear layers to obtain output data. These two stages respectively define the encoder and decoder. Typically, a loss function that enforces the reconstructed output to be similar to the input is minimized and the trained autoencoder learns
+a low-dimensional latent feature useful for downstream tasks. In contrast to the autoencoder, in the variational autoencoder (VAE) \cite{kingma2014auto}, the output of the encoder is not a deterministic map but parameters of a distribution.  In particular, an encoding network maps $x \in \R^N$ and obtains parameters of the latent variable distribution $q(z|x)$. A latent feature $z$  sampled from this distribution is an input to a decoder that outputs $\hat{x}\sim p(x|z)$. A typical prior for the distribution of the latent variable is a Gaussian random variable $p(z)\sim N(0,I)$. Given this, the VAE optimization consists of two terms: (i) a reconstruction loss $\L_1=  \E_{z \sim q(z|x)} \log(p(x|z))$ that enforces that the reconstructed output $\hat{x}$ is similar to the input $x$; and (ii) a Kullback-Leibler divergence loss $\L_2 =  KL(q(z|x),N(0,I))$  that enforces that $q(z|x)$ agrees with $p(z)$. The encoder and decoder are jointly trained by maximizing the total loss $\L_1+\L_2$. 
 
 \subsection{Learning by Active Nonlinear Diffusion}
 
@@ -83,9 +88,9 @@ The active learning algorithm employed in this paper is based on the ideas in \c
 
 
 We represent an HSI as $X=\{x_{i}\}_{i=1}^{n}\subset\mathbb{R}^{N}$ where each pixel is a point in $\R^{N}$ where $N$ is the number of spectral bands. Let $NN_{k}(x_{i})$ denote the set of $k$-nearest neighbors of $x_{i}$ in $X$ using the Euclidean distance metric.
-The $n\times n$ weight matrix $W$ is defined as $W_{ij}=\exp(-\|x_{i}-x_{j}\|_{2}^{2}/\sigma^{2}), x_{j}\in NN_{k}(x_{i})$ with $\sigma$ denoting a scale parameter. With this, the notion of the degree of $x$ naturally follows as $\deg(x_{i}):=\sum_{x_{j}\in X}W_{ij}$. To define a random walk on $X$, we employ the $n\times n$ transition matrix $P_{ij}={W_{ij}}\big/{\deg(x_{i})}.$ It can be easily verified that $P$ has a spectral decomposition $\{(\lambda_{\ell},\Psi_{\ell})\}_{\ell=1}^{n}$. The \emph{diffusion distance at time $t$} between $x_{i},x_{j}\in X$ is defined as $D_{t}(x_{i},x_{j})=\sqrt{\sum\nolimits_{\ell=1}^{n}\lambda_{\ell}^{2t}(\Psi_{\ell}(x_{i})-\Psi_{\ell}(x_{j}))^{2}}$.  We note that $t$ tells us how long the diffusion process runs. In this paper, we use $t=30$ for experiments.
+The $n\times n$ weight matrix $W$ is defined as $W_{ij}=\exp(-\|x_{i}-x_{j}\|_{2}^{2}/\sigma^{2}), x_{j}\in NN_{k}(x_{i})$ with $\sigma$ denoting a scale parameter. With this, the notion of the degree of $x_{i}$ naturally follows as $\deg(x_{i}):=\sum_{x_{j}\in X}W_{ij}$. To define a random walk on $X$, we employ the $n\times n$ transition matrix $P_{ij}={W_{ij}}\big/{\deg(x_{i})}.$ It can be easily verified that $P$ has a spectral decomposition $\{(\lambda_{\ell},\Psi_{\ell})\}_{\ell=1}^{n}$. The \emph{diffusion distance at time $t$} between $x_{i},x_{j}\in X$ is defined as $D_{t}(x_{i},x_{j})=\sqrt{\sum\nolimits_{\ell=1}^{n}\lambda_{\ell}^{2t}(\Psi_{\ell}(x_{i})-\Psi_{\ell}(x_{j}))^{2}}$.  We note that $t$ tells us how long the diffusion process runs. In this paper, we use $t=30$ for experiments.
 
-The main part of the LAND algorithm is to identify points for which one should obtain labels. LAND uses a kernel density estimator (KDE) and diffusion geometry for this task. In particular, the KDE is defined as $p(x)=\sum_{y\in NN_{k}(x)}\exp(-\|x-y\|_{2}^{2}/\sigma_{0}^{2})$ with $\sigma_0$ denoting a scale parameter.  Let 
+The main part of the LAND algorithm is to identify points to query for labels. LAND uses a kernel density estimator (KDE) and diffusion geometry for this task. In particular, the KDE is defined as $p(x)=\sum_{y\in NN_{k}(x)}\exp(-\|x-y\|_{2}^{2}/\sigma_{0}^{2})$ with $\sigma_0$ denoting a scale parameter.  For $x\in X$, let
 
 \begin{align}\label{eqn:rho}
 \rho_{t}(x) &=
@@ -145,7 +150,7 @@ We propose an active learning algorithm, VAE-LAND (see Algorithm \ref{alg:VALAND
 \section{Experimental Results}
 \label{sec:Experiments}
 We demonstrate the accuracy of the proposed algorithm experimentally.  The training of the VAE is done using Tensorflow in Python. For doing the active learning via LAND, we use the publicly available MATLAB code 
-at  \url{https://jmurphy.math.tufts.edu/Code/}. Our code can be found at \url{https://github.com/abiy-tasissa/VAE-LAND}. Our test HSI dataset is the Salinas A hyperspectral dataset. The Salinas scene was captured over Salinas Valley, California. The image has a spatial resolution of 3.7-meter pixels and contains 224 spectral bands. The ground truth consists of 16 classes. We consider the Salinas A dataset, which is a subset of the Salinas dataset, and contains 6 classes. The Salinas A dataset and the ground truth data are publicly available (\url{http://www.ehu.eus/ccwintco/index.php/Hyperspectral_Remote_Sensing_Scenes#Salinas-A_scene}). Figure \ref{fig:SalinasA} shows a visual of the high dimensional data and the ground truth labels. The performance of the algorithm is assessed using overall accuracy, defined as the ratio of correctly estimated labels to total number of labels after optimally aligning with the ground truth. 
+at  \url{https://jmurphy.math.tufts.edu/Code/}. Our code can be found at \url{https://github.com/abiy-tasissa/VAE-LAND}. Our test HSI dataset is the Salinas A hyperspectral dataset. The Salinas scene was captured over Salinas Valley, California. The image has a spatial resolution of 3.7-meter pixels and contains 224 spectral bands. The ground truth consists of 16 classes. We consider the Salinas A dataset, which is a subset of the Salinas dataset, and contains 6 classes. The Salinas A dataset and the ground truth data are publicly available (\url{http://www.ehu.eus/ccwintco/index.php/Hyperspectral_Remote_Sensing_Scenes#Salinas-A_scene}). Figure \ref{fig:SalinasA} shows a visual of the high-dimensional data and the ground truth labels. The performance of the algorithm is assessed using overall accuracy, defined as the ratio of correctly estimated labels to total number of labels after optimally aligning with the ground truth. 
 \begin{figure}[h]
 \includegraphics[width=.23\textwidth,clip]{Images/SalinasA_BandSum-crop.pdf}
 \includegraphics[width=.23\textwidth,clip]{Images/SalinasA_GT-crop.pdf}
@@ -156,13 +161,13 @@ at  \url{https://jmurphy.math.tufts.edu/Code/}. Our code can be found at \url{ht
 \includegraphics[clip,width=.45\textwidth,trim=1cm 3.5cm 1cm 1cm]{Images/VAE_Schematics.pdf}
 \caption{\small{A schematic of the VAE architecture.  Input is a vector in $\R^{224}$. The encoder and decoder are fully connected neural networks. Both have three layers with 128 neurons in each layer. For all layers, the activation function is the rectified linear unit (ReLU).
 The input is cascaded through an encoder. The extracted latent feature in $\R^{40}$ is then cascaded through the decoder to obtain the
-output vector in $\R^{224}$.  Unlike the standard autoencoder, the extraction of the latent feature is not deterministic (see section \ref{sec:vaes} for discussion.)}}
+output vector in $\R^{224}$.  Unlike the standard autoencoder, the extraction of the latent feature is not deterministic (see Section \ref{subsec:vaes} for discussion.)}}
 \label{fig:vae_schematics}
 \end{figure}
 The Salinas A HSI dataset of size $83 \times 86\times 224$ is represented as a point cloud of size $7138\times 224$. We use the unlabeled data to learn a latent space representation of Salinas A in $\R^{40}$ dimensions. A schematic of the VAE architecture is shown in Figure \ref{fig:vae_schematics}. We optimize the VAE loss function using the Adam algorithm with learning rate set to $10^{-4}$. After training the VAE, we input the optimal latent space representation of the Salinas A dataset to the LAND algorithm for the task of inferring the ground truth labels of the HSI data. We compare our result to the standard LAND algorithm that labels the Salinas A dataset in its original representation. Since LAND is an active learning framework, we consider varying number of labeled data points ranging from $10$ to $2000$. In addition, we compare the active learning methods to query the samples with randomly selected training data. Figure \ref{fig:SalinasA} compares the performance of LAND and performance of VAE-LAND. First, for both VAE-LAND and standard LAND, LAND queries lead to significantly better accuracy than random queries. The proposed algorithm, VAE-LAND, attains an accuracy of 96.97\% with just 10 labeled points. This is a $12.5\%$ improvement to the accuracy of the standard LAND algorithm for the same number of labeled points. The standard LAND algorithm requires $400$ labeled points to reach accuracy of $90\%$ while for the same number of labeled points, VAE-LAND has an accuracy of $98.35\%$. 
 
-\noindent \textbf{Complexity and run time}: The complexity of LAND is $O(C_{NNN}+nK_{NN}+n\log(n))$ where $C_{NN}$ is the cost of computing all $K_{NN}$ nearest neighbours \cite{Maggioni2019_LAND}. 
-The computational cost of VAE is difficult to estimate as it depends on several factors (e.g architecture, activation function, choice of SGD algorithm). In our numerical experiments, the cost of VAE is the dominating cost. Since LAND runs on low dimensional features extracted from VAE, it is efficient. 
+\noindent \textbf{Complexity and run time}: The complexity of LAND is $O(C_{NN}+nK_{NN}+n\log(n))$ where $C_{NN}$ is the cost of computing all $K_{NN}$ nearest neighbours \cite{Maggioni2019_LAND}. 
+The computational cost of VAE is difficult to estimate as it depends on several factors (e.g architecture, activation function, choice of SGD algorithm). In our numerical experiments, the cost of VAE is the dominating cost. Since LAND runs on low-dimensional features extracted from VAE, it is efficient. 
 
 \begin{figure}
    % \centering
@@ -174,7 +179,7 @@ The computational cost of VAE is difficult to estimate as it depends on several 
 
 \section{Conclusions and Future Directions}
 \label{sec:Conclusions}
-The proposed active learning algorithm, VAE-LAND, improves over the standard LAND and gives accurate results even when the number of queries are limited. The method uses VAE to generate good features, and uses the diffusion geometry based LAND algorithm to determine query points. The LAND algorithm then uses these queried labels to predict the labels of the unlabeled data samples. In future work, we shall explore data models for which the algorithm has theoretical performance guarantees.   
+The proposed active learning algorithm, VAE-LAND, improves over the standard LAND and gives accurate results even when the number of queries are limited. The method uses VAE to generate good features, and uses the diffusion geometry-based LAND algorithm to determine query points. The LAND algorithm then uses these queried labels to predict the labels of the unlabeled data samples. In future work, we shall explore data models for which the algorithm has theoretical performance guarantees.   
 
 
 \bibliographystyle{IEEEbib}
