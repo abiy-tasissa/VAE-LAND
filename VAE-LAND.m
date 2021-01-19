@@ -14,7 +14,7 @@
 clear all;
 close all;
 % Specify location of LAND_Public folder
-addpath(genpath('C:\Users\abiyo\Documents\LAND_Public'))
+addpath(genpath('C:/home/abiyo\Desktop\LAND_Public\LAND_Public'))
 
 %% Select dataset
 
@@ -60,7 +60,7 @@ PeakOpts.DiffusionTime=100;
 DataSet='SalinasA';
 M=83;
 N=86;
-Budget = [10 20 100 200:200:2000];
+Budget = [10 20 100 200:200:2000 ];
 PeakOpts.DiffusionOpts.epsilon=1;
 PeakOpts.DiffusionOpts.K='automatic';
 PeakOpts.DiffusionTime=30;
@@ -81,13 +81,12 @@ PeakOpts_VAE.DiffusionTime= 30;
 %% Set parameters
 
 [X,LabelsGT,K_GT]=ExperimentalData(DataSet);
-LabelsGT = LabelsGT_VAE;
 PeakOpts.UserPlot=0;
 PeakOpts_VAE.UserPlot=0;
 
 %bHow many nearest neighbors to use for diffusion distance
-PeakOpts_VAE.DiffusionOpts.kNN=30; %For comparison with SpatialDiffusion%100;
-PeakOpts.DiffusionOpts.kNN=100; %For comparison with SpatialDiffusion%100;
+PeakOpts_VAE.DiffusionOpts.kNN=30; 
+PeakOpts.DiffusionOpts.kNN=100; 
 
 %bForce probability of self-loop to exceed .5.
 PeakOpts.DiffusionOpts.LazyWalk=0;
@@ -143,13 +142,6 @@ end
 if M>0 && N>0
     
     figure;
-    imagesc(reshape(sum(X,2),M,N));
-    axis equal
-    axis off;
-    axis tight;
-    colormap('gray');
-    
-    figure;
     imagesc(reshape(LabelsGT,M,N));
     axis equal
     axis off;
@@ -176,7 +168,3 @@ xticklabels(Budget([1,2:1:length(Budget)]))
 title('Performance of active learning algorithms','Interpreter','latex','FontSize',14)
 xlabel('Number Queries','Interpreter','latex','FontSize',14);
 ylabel('Accuracy','Interpreter','latex','FontSize',14);
-% 
-
-
-
