@@ -19,7 +19,7 @@ algorithm. LAND is a provable diffusion based algorithm that is robust to differ
 
 2. Run `Hyperspectral_VAE.py` on an HSI data of interest and obtain a latent HSI data. This will be an input to LAND. 
 
-3. RUN `VAE-LAND.m`. It is necessary to specify location of LAND_Public folder. For example, `addpath(genpath('C:/home/abiyo\Desktop\LAND_Public\LAND_Public'))'
+3. RUN `VAE-LAND.m`. It is necessary to specify location of LAND_Public folder. For example, `addpath(genpath('C:/home/abiyo\Desktop\LAND_Public\LAND_Public'))`
 
 ## References
 
