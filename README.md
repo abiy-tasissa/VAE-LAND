@@ -25,7 +25,7 @@ algorithm. LAND is a provable diffusion based algorithm that is robust to differ
 
 If you find the code useful, please cite the following papers:
 
-* Abiy Tasissa, Duc Nguyen, and James Murphy, Deep Diffusion Processes for Active Learning of Hyperspectral Images
+* Abiy Tasissa, Duc Nguyen, and James Murphy, Deep Diffusion Processes for Active Learning of Hyperspectral Images [Link](https://arxiv.org/abs/2101.03197)
 
 * Maggioni, M., J.M. Murphy, Learning by Active Nonlinear Diffusion. Foundations of Data Science, 1(3), pp. 271-291. 2019
 
